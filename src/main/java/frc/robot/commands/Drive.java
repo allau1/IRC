@@ -10,17 +10,17 @@ public class Drive extends CommandBase {
     private Arm arm;
     private Joystick leftJ, rightJ, armJ;
 
-    public Drive(Drivetrain dt, Arm a, Joystick left, Joystick right, Joystick arm) {
+    public Drive(Drivetrain dt, Arm a, Joystick left, Joystick right) {
         drivetrain = dt;
+        arm = a;
         leftJ = left;
         rightJ = right;
-        armJ = arm;
     }
 
     @Override
     public void execute() {
         drivetrain.drive(leftJ.getY(), rightJ.getY());
-        arm.drive(armJ.getY());
+        arm.drive(((rightJ.getTriggerPressed()) ? 1 : 0) + ((rightJ.getRawButton(0) ? -1 : 0)));
     }
 
     public void end(boolean i) {

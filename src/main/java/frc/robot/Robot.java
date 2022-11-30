@@ -17,12 +17,14 @@ import frc.robot.subsystems.Drivetrain;
  * directory.
  */
 public class Robot extends TimedRobot {
+  public static double DRIVETRAIN_SPEED = 0.65;
+  public static double ARM_SPEED = 1;
+
   private Joystick l = new Joystick(0);
   private Joystick r = new Joystick(1);
-  private Joystick a = new Joystick(2);
   private Drivetrain drivetrain = new Drivetrain(0, 1);
   private Arm arm = new Arm(2);
-  private Drive drive = new Drive(drivetrain, arm, l, r, a);
+  private Drive drive = new Drive(drivetrain, arm, l, r);
 
   /**
    * This function is run when the robot is first started up and should be used for any
